@@ -39,20 +39,34 @@ class App extends Component {
     const {imagePreviewUrl} = this.state
     let $imagePreview = null
     if (imagePreviewUrl) {
-      $imagePreview = (<Traking image={imagePreviewUrl} />)
+      $imagePreview = <Traking image={imagePreviewUrl} />
     }
 
     return (
       <div>
         <NavBar />
-        <div className='container'>
-          <div className='row'>
-            <div className='col s2'>
-              <input type='file' onChange={this.fileChangedHandler} />
+
+        <div className='row'>
+
+          <div className='col s2'>
+
+            <div class='file-field input-field'>
+              <div className='btn'>
+                <span>File</span>
+                <input
+                  type='file'
+                  onChange={this.fileChangedHandler} />
+              </div>
+
+              <div className='file-path-wrapper'>
+                <input class='file-path validate' type='text' />
+              </div>
+
             </div>
-            <div className='col s10 center'>
-              {$imagePreview}
-            </div>
+          </div>
+
+          <div className='col s10 center'>
+            {$imagePreview}
           </div>
         </div>
       </div>

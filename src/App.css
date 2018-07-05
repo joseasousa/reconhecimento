@@ -5,15 +5,10 @@
     top: -1000px;
   }
 
-  #img {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin: -173px 0 0 -300px;
-  }
+  
 
 .demo-container {
-  width: 320px;
-  height: 240px;
+  max-width:  600px;
+  max-height: 600px;
   position: relative;
 }

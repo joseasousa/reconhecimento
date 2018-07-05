@@ -41,7 +41,7 @@ class Traking extends Component {
           <img
             ref='img'
             src={image}
-            width='200' height='200' />
+          />
         </div>
       </div>
 
