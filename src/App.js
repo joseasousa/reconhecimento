@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import Traking from './Traking'
 import NavBar from './component/NavBar'
-import './App.css'
 
 class App extends Component {
   constructor (props) {
