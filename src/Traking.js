@@ -1,19 +1,52 @@
-import React from 'react'
-import 'tracking'
-import './computerVision/face'
+import React, { Component } from 'react'
+import './App.css'
 
-const Traking = () => (
-  <div>
-    <div className='demo-title'>
-      <p><a href='http://trackingjs.com' target='_parent'>tracking.js</a> － hover image to see all faces detected</p>
-    </div>
+class Traking extends Component {
+  componentDidMount () {
+    const tracking = window.tracking
+    console.log(tracking)
+    const img = this.refs.img
 
-    <div className='demo-frame'>
-      <div className='demo-container'>
-        <span id='photo'><img id='img' src='faces.jpg' /></span>
+    const tracker = new tracking.ObjectTracker('face')
+
+    tracker.setStepSize(2)
+
+    tracking.track(img, tracker)
+
+    tracker.on('track', function (event) {
+      event.data.forEach(function (rect) {
+        window.plot(rect.x, rect.y, rect.width, rect.height)
+      })
+    })
+
+    window.plot = function (x, y, w, h) {
+      const rect = document.createElement('div')
+      document.querySelector('.demo-container').appendChild(rect)
+
+      rect.classList.add('rect')
+      rect.style.width = w + 'px'
+      rect.style.height = h + 'px'
+      rect.style.left = (img.offsetLeft + x) + 'px'
+      rect.style.top = (img.offsetTop + y) + 'px'
+    }
+  }
+
+  render () {
+    const {image} = this.props
+    console.log('arquivo', image)
+    return (
+
+      <div className='row'>
+        <div className='demo-container'>
+          <img
+            ref='img'
+            src={image}
+            width='200' height='200' />
+        </div>
       </div>
-    </div>
-  </div>
-)
+
+    )
+  }
+}
 
 export default Traking
