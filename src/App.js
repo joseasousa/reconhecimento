@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Traking from './Traking'
+import NavBar from './component/NavBar'
 import './App.css'
 
 class App extends Component {
@@ -44,9 +45,17 @@ class App extends Component {
 
     return (
       <div>
-        <input type='file' onChange={this.fileChangedHandler} />
-
-        {$imagePreview}
+        <NavBar />
+        <div className='container'>
+          <div className='row'>
+            <div className='col s2'>
+              <input type='file' onChange={this.fileChangedHandler} />
+            </div>
+            <div className='col s10 center'>
+              {$imagePreview}
+            </div>
+          </div>
+        </div>
       </div>
     )
   }
