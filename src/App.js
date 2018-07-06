@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Traking from './Traking'
-import './App.css'
+import NavBar from './components/NavBar'
 
 class App extends Component {
   constructor (props) {
@@ -39,15 +39,36 @@ class App extends Component {
     const {imagePreviewUrl} = this.state
     let $imagePreview = null
     if (imagePreviewUrl) {
-      $imagePreview = (<Traking image={imagePreviewUrl} />)
+      $imagePreview = <Traking image={imagePreviewUrl} />
     }
 
     return (
       <div>
-        <input type='file' onChange={this.fileChangedHandler} />
+        <NavBar />
 
-        {$imagePreview}
+        <div className='row'>
+          <div className='file-field input-field'>
+            <div className='btn'>
+              <span>Imagem</span>
+              <input
+                type='file'
+                onChange={this.fileChangedHandler}
+              />
+            </div>
+            <div className='file-path-wrapper'>
+              <input
+                className='file-path validate'
+                type='text'
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className='row'>
+          {$imagePreview}
+        </div>
       </div>
+
     )
   }
 }

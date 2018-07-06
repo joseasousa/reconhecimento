@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './App.css'
+import './Traking.css'
 
 class Traking extends Component {
   componentDidMount () {
@@ -13,13 +13,13 @@ class Traking extends Component {
 
     tracking.track(img, tracker)
 
-    tracker.on('track', function (event) {
-      event.data.forEach(function (rect) {
+    tracker.on('track', event =>
+      event.data.forEach(rect =>
         window.plot(rect.x, rect.y, rect.width, rect.height)
-      })
-    })
+      )
+    )
 
-    window.plot = function (x, y, w, h) {
+    window.plot = (x, y, w, h) => {
       const rect = document.createElement('div')
       document.querySelector('.demo-container').appendChild(rect)
 
@@ -41,7 +41,9 @@ class Traking extends Component {
           <img
             ref='img'
             src={image}
-            width='200' height='200' />
+            width='600'
+            height='400'
+          />
         </div>
       </div>
 
